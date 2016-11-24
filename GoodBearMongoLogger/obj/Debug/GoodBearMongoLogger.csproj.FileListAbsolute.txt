@@ -1,0 +1,11 @@
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\obj\Debug\GoodBearMongoLogger.csprojResolveAssemblyReference.cache
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\GoodBearMongoLogger.dll
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\GoodBearMongoLogger.pdb
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\MongoDB.Bson.dll
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\MongoDB.Driver.Core.dll
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\MongoDB.Driver.dll
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\MongoDB.Bson.xml
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\MongoDB.Driver.xml
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\bin\Debug\MongoDB.Driver.Core.xml
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\obj\Debug\GoodBearMongoLogger.dll
+C:\workspace\GoodBearMongoLogger\GoodBearMongoLogger\obj\Debug\GoodBearMongoLogger.pdb
