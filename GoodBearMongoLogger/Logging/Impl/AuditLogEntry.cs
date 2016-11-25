@@ -1,4 +1,4 @@
-﻿using GoodBearMongoLogger.Logging.Enum;
+﻿using GoodBearMongoLogger.Logging.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Logging.Impl
 {
-    internal class LogEntry : LogEntryBase
+    class AuditLogEntry
     {
-        public LogLevel Level {get; set;}
-        public Exception Exception { get; set; }
         public string Message { get; set; }
+
+        public IAuditEntry AuditEntry { get; set; }
     }
 }

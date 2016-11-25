@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GoodBearMongoLogger.Logging.Enum;
 
-namespace GoodBearMongoLogger.Logging.Interface
+namespace GoodBearMongoLogger.Logging.Interfaces
 {
     interface ILogger
     {

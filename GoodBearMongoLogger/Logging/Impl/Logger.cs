@@ -1,5 +1,5 @@
 ﻿using System;
-using GoodBearMongoLogger.Logging.Interface;
+using GoodBearMongoLogger.Logging.Interfaces;
 using GoodBearMongoLogger.Logging.Enum;
 
 namespace GoodBearMongoLogger.Logging.Impl
