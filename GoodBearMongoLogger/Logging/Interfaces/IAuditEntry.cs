@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Logging.Interfaces
 {
-    interface IAuditEntry
+    public interface IAuditEntry
     {
     }
 }

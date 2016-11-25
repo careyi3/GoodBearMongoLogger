@@ -7,7 +7,7 @@ using GoodBearMongoLogger.Logging.Enum;
 
 namespace GoodBearMongoLogger.Logging.Interfaces
 {
-    interface ILogger
+    public interface ILogger
     {
         void Log(LogLevel level, string message, Exception exception);
         void Log(LogLevel level, string message);

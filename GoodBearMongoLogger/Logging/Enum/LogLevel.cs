@@ -1,6 +1,6 @@
 ﻿namespace GoodBearMongoLogger.Logging.Enum
 {
-    enum LogLevel
+    public enum LogLevel
     {
         ERROR,
         WARNING,

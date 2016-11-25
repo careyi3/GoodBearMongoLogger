@@ -4,7 +4,7 @@ using GoodBearMongoLogger.Logging.Enum;
 
 namespace GoodBearMongoLogger.Logging.Impl
 {
-    class Logger : ILogger
+    internal class Logger : ILogger
     {
         public void Log(LogLevel level, string message)
         {
