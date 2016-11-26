@@ -15,5 +15,15 @@ namespace GoodBearMongoLogger.Logging.Impl
         {
             throw new NotImplementedException();
         }
+
+        public void LogEvent(string message, IEventEntry eventEntry)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogAudit(string message, IAuditEntry auditEntry)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
