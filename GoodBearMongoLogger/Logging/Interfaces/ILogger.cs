@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GoodBearMongoLogger.Logging.Enum;
 
 namespace GoodBearMongoLogger.Logging.Interfaces
@@ -13,5 +9,9 @@ namespace GoodBearMongoLogger.Logging.Interfaces
         void Log(LogLevel level, string message);
         void LogEvent(string message, IEventEntry eventEntry);
         void LogAudit(string message, IAuditEntry auditEntry);
+
+        string LoggerName { get; }
+
+        string DatabaseName { get; }
     }
 }
