@@ -11,6 +11,8 @@ namespace GoodBearMongoLogger.Demo
 
             var sample = ServiceLocator.Current.GetInstance<SampleLoggingClass>();
 
+            sample.DoStuff();
+
         }
     }
 }
