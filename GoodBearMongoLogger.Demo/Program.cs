@@ -1,4 +1,5 @@
 ﻿using GoodBearMongoLogger.Services.Impl;
+using Microsoft.Practices.ServiceLocation;
 
 namespace GoodBearMongoLogger.Demo
 {
@@ -6,7 +7,10 @@ namespace GoodBearMongoLogger.Demo
     {
         static void Main(string[] args)
         {
-            
+            IoCBootstraper.Init();
+
+            var sample = ServiceLocator.Current.GetInstance<SampleLoggingClass>();
+
         }
     }
 }

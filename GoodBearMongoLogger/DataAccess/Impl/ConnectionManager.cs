@@ -26,6 +26,7 @@ namespace GoodBearMongoLogger.DataAccess
             _mongoCredential = MongoCredential.CreateCredential(mongoConfig.AuthDatabase, mongoConfig.Username, mongoConfig.Password);
             _mongoCredentials = new List<MongoCredential>();
             _mongoCredentials.Add(_mongoCredential);
+            _mongoClientSettings = new MongoClientSettings();
             _mongoClientSettings.Credentials = _mongoCredentials;
             _mongoServerAddress = new MongoServerAddress(mongoConfig.Host, mongoConfig.Port);
             _mongoClientSettings.Server = _mongoServerAddress;
