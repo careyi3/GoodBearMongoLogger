@@ -43,6 +43,7 @@ namespace GoodBearMongoLogger.Factory
                 IMongoConfig mongoConfig = new MongoConfig(mongoConnection);
                 _connectionManager = new ConnectionManager(mongoConfig);
             }
+            _loggerConfigs = new Dictionary<string, Tuple<string, string>>();
             foreach (var logger in _configService.MongoLoggerConfig.Loggers.GetLoggers())
             {
                 _loggerConfigs.Add(logger.LoggerName, new Tuple<string, string>(logger.LoggerName, logger.DatabaseName));

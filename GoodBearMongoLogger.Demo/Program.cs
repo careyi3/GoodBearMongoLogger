@@ -1,4 +1,5 @@
-﻿using GoodBearMongoLogger.Services.Impl;
+﻿using GoodBearMongoLogger.Factory;
+using GoodBearMongoLogger.Services.Impl;
 using Microsoft.Practices.ServiceLocation;
 
 namespace GoodBearMongoLogger.Demo
@@ -12,6 +13,12 @@ namespace GoodBearMongoLogger.Demo
             var sample = ServiceLocator.Current.GetInstance<SampleLoggingClass>();
 
             sample.DoStuff();
+
+            LoggerFactory.Init();
+
+            var sample2 = new AnotherSampleLoggerClass();
+
+            sample2.DoStuff();
 
         }
     }

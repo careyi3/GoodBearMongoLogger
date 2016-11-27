@@ -64,6 +64,7 @@
     <Compile Include="DataAccess\Interfaces\IMongoConfig.cs" />
     <Compile Include="Exceptions\InvalidMongoDBConfigurationException.cs" />
     <Compile Include="Exceptions\InvalidMongoLoggerConfigurationException.cs" />
+    <Compile Include="Factory\LoggerFactory.cs" />
     <Compile Include="Logging\Impl\AuditLogEntry.cs" />
     <Compile Include="Logging\Impl\EventLogEntry.cs" />
     <Compile Include="Logging\Interfaces\IAuditEntry.cs" />
