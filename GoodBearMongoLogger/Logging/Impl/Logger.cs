@@ -34,7 +34,7 @@ namespace GoodBearMongoLogger.Logging.Impl
             LogEntry entry = new LogEntry { Level = level, Message = message };
 
             var document = _bsonDocumentBuilderService.BuildLogEntry(entry);
-            _dataAccessService.SaveAsync(document, _databaseName, _loggerName);
+            _dataAccessService.Save(document, _databaseName, _loggerName);
         }
 
         public void Log(LogLevel level, string message, Exception exception)
@@ -43,7 +43,7 @@ namespace GoodBearMongoLogger.Logging.Impl
             LogEntry entry = new LogEntry { Level = level, Message = message, Exception = exception};
 
             var document = _bsonDocumentBuilderService.BuildLogEntry(entry);
-            _dataAccessService.SaveAsync(document, _databaseName, _loggerName);
+            _dataAccessService.Save(document, _databaseName, _loggerName);
         }
 
         public void LogEvent(string message, IEventEntry eventEntry)
@@ -52,7 +52,7 @@ namespace GoodBearMongoLogger.Logging.Impl
             EventLogEntry entry = new EventLogEntry { Message = message, EventEntry = eventEntry };
 
             var document = _bsonDocumentBuilderService.BuildEventLogEntry(entry);
-            _dataAccessService.SaveAsync(document, _databaseName, _loggerName);
+            _dataAccessService.Save(document, _databaseName, _loggerName);
         }
 
         public void LogAudit(string message, IAuditEntry auditEntry)
@@ -61,7 +61,7 @@ namespace GoodBearMongoLogger.Logging.Impl
             AuditLogEntry entry = new AuditLogEntry { Message = message, AuditEntry = auditEntry };
 
             var document = _bsonDocumentBuilderService.BuildAuditLogEntry(entry);
-            _dataAccessService.SaveAsync(document, _databaseName, _loggerName);
+            _dataAccessService.Save(document, _databaseName, _loggerName);
         }
     }
 }

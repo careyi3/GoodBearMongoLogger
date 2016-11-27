@@ -1,5 +1,4 @@
-﻿using System;
-using GoodBearMongoLogger.Logging.Impl;
+﻿using GoodBearMongoLogger.Logging.Impl;
 using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Bson;
 using Newtonsoft.Json;

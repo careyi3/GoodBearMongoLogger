@@ -13,13 +13,13 @@ namespace GoodBearMongoLogger.Services.Impl
             _connectionManager = connectionManager;
         }
 
-        public async Task SaveAsync(BsonDocument data,string targetDatabase,string targetCollection)
+        public void Save(BsonDocument data,string targetDatabase,string targetCollection)
         {
             var db = _connectionManager.MongoClient.GetDatabase(targetDatabase);
 
             var collection = db.GetCollection<BsonDocument>(targetCollection);
 
-            await collection.InsertOneAsync(data);
+            collection.InsertOne(data);
         }
 
     }

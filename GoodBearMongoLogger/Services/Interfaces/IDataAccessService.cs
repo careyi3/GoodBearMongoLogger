@@ -5,6 +5,6 @@ namespace GoodBearMongoLogger.Services.Interfaces
 {
     internal interface IDataAccessService
     {
-        Task SaveAsync(BsonDocument data, string targetDatabase, string targetCollection);
+        void Save(BsonDocument data, string targetDatabase, string targetCollection);
     }
 }
