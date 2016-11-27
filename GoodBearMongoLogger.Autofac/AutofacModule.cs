@@ -37,11 +37,11 @@ namespace GoodBearMongoLogger.Autofac
             builder.RegisterType<MongoConfig>().As<IMongoConfig>();
             if(_mongoClient != null)
             {
-                builder.Register(x => new ConnectionManager(_mongoClient)).As<IConnectionManager>();
+                builder.Register(x => new ConnectionManager(_mongoClient)).As<IConnectionManager>().SingleInstance();
             }
             else
             {
-                builder.RegisterType<ConnectionManager>().As<IConnectionManager>();
+                builder.RegisterType<ConnectionManager>().As<IConnectionManager>().SingleInstance();
             }
             builder.RegisterType<BsonDocumentBuilderService>().As<IBsonDocumentBuilderService>();
             builder.RegisterType<DataAccessService>().As<IDataAccessService>();
