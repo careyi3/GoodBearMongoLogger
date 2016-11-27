@@ -27,7 +27,7 @@ namespace GoodBearMongoLogger.Config.Impl
 
             for (int idx = 0; idx < base.Count; idx++)
             {
-                if (this[idx].Name.ToLower() == name)
+                if (this[idx].DatabaseName.ToLower() == name)
                     return idx;
             }
             return -1;
@@ -45,7 +45,7 @@ namespace GoodBearMongoLogger.Config.Impl
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((Logger)element).Name;
+            return ((Logger)element).DatabaseName;
         }
 
         protected override string ElementName

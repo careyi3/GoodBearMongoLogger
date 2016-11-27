@@ -10,10 +10,10 @@ namespace GoodBearMongoLogger.DataAccess
         private MongoCredential _mongoCredential;
         private ICollection<MongoCredential> _mongoCredentials;
         private MongoClientSettings _mongoClientSettings;
-        private MongoClient _mongoClient;
+        private IMongoClient _mongoClient;
         private MongoServerAddress _mongoServerAddress;
 
-        public MongoClient MongoClient
+        public IMongoClient MongoClient
         {
             get
             {
@@ -30,6 +30,11 @@ namespace GoodBearMongoLogger.DataAccess
             _mongoServerAddress = new MongoServerAddress(mongoConfig.Host, mongoConfig.Port);
             _mongoClientSettings.Server = _mongoServerAddress;
             _mongoClient = new MongoClient(_mongoClientSettings);
+        }
+
+        public ConnectionManager(IMongoClient mongoClient)
+        {
+            _mongoClient = mongoClient;
         }
     }
 }

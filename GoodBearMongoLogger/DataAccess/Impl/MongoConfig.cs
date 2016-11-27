@@ -1,4 +1,6 @@
-﻿using GoodBearMongoLogger.DataAccess.Interfaces;
+﻿using GoodBearMongoLogger.Config.Interfaces;
+using GoodBearMongoLogger.DataAccess.Interfaces;
+using System;
 
 namespace GoodBearMongoLogger.DataAccess.Impl
 {
@@ -14,13 +16,13 @@ namespace GoodBearMongoLogger.DataAccess.Impl
 
         public int Port { get; set; }
 
-        public MongoConfig(IMongoConfig mongoConfig)
+        public MongoConfig(IMongoConnection mongoConfig)
         {
             Username = mongoConfig.Username;
             Password = mongoConfig.Password;
             AuthDatabase = mongoConfig.AuthDatabase;
             Host = mongoConfig.Host;
-            Port = mongoConfig.Port;
+            Port = Convert.ToInt32(mongoConfig.Port);
         }
     }
 }

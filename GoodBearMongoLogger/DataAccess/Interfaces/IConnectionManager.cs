@@ -4,6 +4,6 @@ namespace GoodBearMongoLogger.DataAccess.Interfaces
 {
     internal interface IConnectionManager
     {
-        MongoClient MongoClient { get; }
+        IMongoClient MongoClient { get; }
     }
 }
