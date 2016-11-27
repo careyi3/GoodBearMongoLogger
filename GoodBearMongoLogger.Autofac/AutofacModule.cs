@@ -1,11 +1,15 @@
 ﻿using Autofac;
+using Autofac.Core;
 using GoodBearMongoLogger.Config.Interfaces;
 using GoodBearMongoLogger.DataAccess;
 using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
+using GoodBearMongoLogger.Logging.Impl;
+using GoodBearMongoLogger.Logging.Interfaces;
 using GoodBearMongoLogger.Services.Impl;
 using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace GoodBearMongoLogger.Autofac
 {
@@ -41,9 +45,14 @@ namespace GoodBearMongoLogger.Autofac
             builder.RegisterType<BsonDocumentBuilderService>().As<IBsonDocumentBuilderService>();
             builder.RegisterType<DataAccessService>().As<IDataAccessService>();
 
-            foreach(var logger in _configService.MongoLoggerConfig.Loggers)
+            foreach(var logger in _configService.MongoLoggerConfig.Loggers.GetLoggers())
             {
-                logger
+                IList<Parameter> parameters = new List<Parameter>
+                {
+                    new NamedParameter("databaseName",logger.DatabaseName),
+                    new NamedParameter("loggerName",logger.LoggerName),
+                };
+                builder.RegisterType<Logger>().Named<ILogger>(logger.LoggerName).WithParameters(parameters);
             }
         }
     }

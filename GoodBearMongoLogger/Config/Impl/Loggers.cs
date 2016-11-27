@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 
 namespace GoodBearMongoLogger.Config.Impl
 {
     public class Loggers : ConfigurationElementCollection
     {
-
         public new Logger this[string name]
         {
             get
@@ -19,6 +20,16 @@ namespace GoodBearMongoLogger.Config.Impl
         public Logger this[int index]
         {
             get { return (Logger)BaseGet(index); }
+        }
+
+        public ICollection<Logger> GetLoggers()
+        {
+            List<Logger> loggers = new List<Logger>();
+            foreach (var key in this.BaseGetAllKeys())
+            {
+                loggers.Add((Logger)BaseGet(key));
+            }
+            return loggers;
         }
 
         public int IndexOf(string name)
