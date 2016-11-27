@@ -2,6 +2,7 @@
 using GoodBearMongoLogger.Logging.Impl;
 using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Bson;
+using Newtonsoft.Json;
 
 namespace GoodBearMongoLogger.Services.Impl
 {
@@ -9,17 +10,20 @@ namespace GoodBearMongoLogger.Services.Impl
     {
         public BsonDocument BuildAuditLogEntry(AuditLogEntry logEntry)
         {
-            throw new NotImplementedException();
+            var json = JsonConvert.SerializeObject(logEntry);
+            return BsonDocument.Parse(json);
         }
 
         public BsonDocument BuildEventLogEntry(EventLogEntry logEntry)
         {
-            throw new NotImplementedException();
+            var json = JsonConvert.SerializeObject(logEntry);
+            return BsonDocument.Parse(json);
         }
 
         public BsonDocument BuildLogEntry(LogEntry logEntry)
         {
-            throw new NotImplementedException();
+            var json = JsonConvert.SerializeObject(logEntry);
+            return BsonDocument.Parse(json);
         }
     }
 }

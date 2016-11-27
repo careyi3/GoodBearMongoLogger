@@ -1,5 +1,4 @@
 ﻿using GoodBearMongoLogger.Factory;
-using GoodBearMongoLogger.Services.Impl;
 using Microsoft.Practices.ServiceLocation;
 
 namespace GoodBearMongoLogger.Demo
