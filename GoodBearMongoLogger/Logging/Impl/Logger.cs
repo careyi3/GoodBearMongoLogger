@@ -19,8 +19,10 @@ namespace GoodBearMongoLogger.Logging.Impl
         public string DatabaseName { get { return _databaseName; } }
 
 
-        public Logger(IDataAccessService dataAccessService, IBsonDocumentBuilderService bsonDocumentBuilderService)
+        public Logger(IDataAccessService dataAccessService, IBsonDocumentBuilderService bsonDocumentBuilderService, string databaseName, string loggerName)
         {
+            _databaseName = databaseName;
+            _loggerName = loggerName;
             _dataAccessService = dataAccessService;
             _bsonDocumentBuilderService = bsonDocumentBuilderService;
         }
