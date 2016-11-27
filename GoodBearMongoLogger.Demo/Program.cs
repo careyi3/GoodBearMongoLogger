@@ -6,8 +6,7 @@ namespace GoodBearMongoLogger.Demo
     {
         static void Main(string[] args)
         {
-            var configService = new ConfigService();
-            var config = configService.MongoLoggerConfig;
+            
         }
     }
 }

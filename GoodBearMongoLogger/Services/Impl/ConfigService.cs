@@ -5,7 +5,7 @@ using GoodBearMongoLogger.Config.Impl;
 
 namespace GoodBearMongoLogger.Services.Impl
 {
-    public class ConfigService : IConfigService
+    internal public class ConfigService : IConfigService
     {
         private MongoLogger _mongoLogger;
         
