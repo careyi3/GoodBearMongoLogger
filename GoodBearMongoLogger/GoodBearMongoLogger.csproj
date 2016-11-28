@@ -94,6 +94,7 @@
     <Compile Include="Services\Interfaces\IDataAccessService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GoodBearMongoLogger.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

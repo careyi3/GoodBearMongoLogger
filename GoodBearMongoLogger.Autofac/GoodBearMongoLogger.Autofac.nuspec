@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>GoodBearMongoLogger.Autofac</id>
+    <version>1.0.0</version>
+    <title>GoodBearMongoLogger.Autofac</title>
+    <authors>Ian Carey</authors>
+    <owners>Ian Carey</owners>
+    <licenseUrl>https://github.com/careyi3/GoodBearMongoLogger/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/careyi3/GoodBearMongoLogger/blob/master/README.md</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .NET logger implementation for logging to MongoDB</description>
+    <releaseNotes>This is the inital release of GoodBearMongoLogger.Autofac.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Autofac GoodBearMongoLogger.Autofac GoodBearMongoLogger GoodBear Mongo Logger</tags>
+    <dependencies>
+      <dependency id="Autofac" version="3.5.2"/>
+      <dependency id="Autofac.Extras.Attributed" version="3.3.0"/>
+      <dependency id="Autofac.Extras.CommonServiceLocator" version="4.0.0"/>
+      <dependency id="Autofac.Mef" version="3.0.3"/>
+      <dependency id="CommonServiceLocator" version="1.3"/>
+      <dependency id="MongoDB.Bson" version="2.3.0"/>
+      <dependency id="MongoDB.Driver" version="2.3.0"/>
+      <dependency id="MongoDB.Driver.Core" version="2.3.0"/>
+      <dependency id="GoodBearMongoLogger" version="1.0.0"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="\bin\Release\GoodBearMongoLogger.Autofac.dll" target="lib\GoodBearMongoLogger.Autofac.dll" />
+  </files>
+</package>

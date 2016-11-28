@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodBearMongoLogger.Autofac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodBearMongoLogger.Tests", "GoodBearMongoLogger.Tests\GoodBearMongoLogger.Tests.csproj", "{37FEE621-781B-4EE9-AB1B-E70C747957FB}"
 EndProject
-Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "DevOps", "..\GoodBearNeo4J\DevOps\DevOps.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
+Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "DevOps", "DevOps\DevOps.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
