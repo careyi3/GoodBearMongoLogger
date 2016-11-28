@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Config.Impl
 {
-    public class MongoLogger : ConfigurationSection
+    internal class MongoLogger : ConfigurationSection
     {
         [ConfigurationProperty("mongoConnection", IsRequired = false)]
         public MongoConnection MongoConnection

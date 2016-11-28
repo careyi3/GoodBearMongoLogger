@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Config.Impl
 {
-    public class Logger : ConfigurationElement
+    internal class Logger : ConfigurationElement
     {
 
         [ConfigurationProperty("databaseName", IsRequired = true, IsKey = true, DefaultValue = "Logs")]

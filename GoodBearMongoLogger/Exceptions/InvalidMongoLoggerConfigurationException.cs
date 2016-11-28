@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Exceptions
 {
-    class InvalidMongoLoggerConfigurationException : Exception
+    internal class InvalidMongoLoggerConfigurationException : Exception
     {
         public InvalidMongoLoggerConfigurationException() { }
 

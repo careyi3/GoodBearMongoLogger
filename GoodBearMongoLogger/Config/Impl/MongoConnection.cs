@@ -3,7 +3,7 @@ using GoodBearMongoLogger.Config.Interfaces;
 
 namespace GoodBearMongoLogger.Config.Impl
 {
-    public class MongoConnection : ConfigurationElement,IMongoConnection
+    internal class MongoConnection : ConfigurationElement,IMongoConnection
     {
         [ConfigurationProperty("username", DefaultValue = "mongoadmin", IsRequired = true)]
         [StringValidator(MinLength = 1)]

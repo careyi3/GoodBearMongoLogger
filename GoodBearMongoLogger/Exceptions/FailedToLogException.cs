@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Exceptions
 {
-    class FailedToLogException : Exception
+    internal class FailedToLogException : Exception
     {
         public FailedToLogException() { }
 

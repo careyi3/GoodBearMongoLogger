@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Exceptions
 {
-    class InvalidMongoDBConfigurationException : Exception
+    internal class InvalidMongoDBConfigurationException : Exception
     {
         public InvalidMongoDBConfigurationException() { }
 

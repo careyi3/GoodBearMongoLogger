@@ -5,7 +5,7 @@ using System.Configuration;
 
 namespace GoodBearMongoLogger.Config.Impl
 {
-    public class Loggers : ConfigurationElementCollection
+    internal class Loggers : ConfigurationElementCollection
     {
         public new Logger this[string name]
         {

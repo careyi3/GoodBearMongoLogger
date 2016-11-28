@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Exceptions
 {
-    class MongoPersistanceException : Exception
+    internal class MongoPersistanceException : Exception
     {
         public MongoPersistanceException() { }
 

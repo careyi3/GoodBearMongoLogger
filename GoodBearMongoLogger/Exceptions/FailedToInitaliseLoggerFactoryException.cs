@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Exceptions
 {
-    class FailedToInitaliseLoggerFactoryException : Exception
+    internal class FailedToInitaliseLoggerFactoryException : Exception
     {
         public FailedToInitaliseLoggerFactoryException() { }
 

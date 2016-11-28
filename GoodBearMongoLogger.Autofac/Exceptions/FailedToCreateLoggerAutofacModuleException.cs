@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Autofac.Exceptions
 {
-    class FailedToCreateLoggerAutofacModuleException : Exception
+    internal class FailedToCreateLoggerAutofacModuleException : Exception
     {
         public FailedToCreateLoggerAutofacModuleException() { }
 
