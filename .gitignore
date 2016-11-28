@@ -1,0 +1,39 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+.vs/
+packages/
+GoodBearMongoLogger/bin/
+GoodBearMongoLogger/obj/
+GoodBearMongoLogger.Demo/bin/
+GoodBearMongoLogger.Demo/obj/
+GoodBearMongoLogger.Tests/bin/
+GoodBearMongoLogger.Tests/obj/
+GoodBearMongoLogger.Autofac/bin/
+GoodBearMongoLogger.Autofac/obj/
+
