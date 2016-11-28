@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Logging.Impl
 {
-    internal class AuditLogEntry
+    internal class AuditLogEntry : AbstractLogEntryBase
     {
         public string Message { get; set; }
 

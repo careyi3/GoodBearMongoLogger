@@ -78,10 +78,11 @@
     <Compile Include="Logging\Interfaces\IAuditEntry.cs" />
     <Compile Include="Logging\Interfaces\IEventEntry.cs" />
     <Compile Include="Logging\Impl\LogEntry.cs" />
-    <Compile Include="Logging\Impl\LogEntryBase.cs" />
+    <Compile Include="Logging\Impl\AbstractLogEntryBase.cs" />
     <Compile Include="Logging\Impl\Logger.cs" />
     <Compile Include="Config\Impl\Logger.cs" />
     <Compile Include="Config\Impl\Loggers.cs" />
+    <Compile Include="Logging\Interfaces\ILogEntryBase.cs" />
     <Compile Include="Logging\Interfaces\ILogger.cs" />
     <Compile Include="Logging\Enum\LogLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

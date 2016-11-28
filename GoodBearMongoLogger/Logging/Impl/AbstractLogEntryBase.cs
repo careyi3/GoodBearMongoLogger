@@ -1,9 +1,11 @@
-﻿using System;
+﻿using GoodBearMongoLogger.Logging.Interfaces;
+using System;
 using System.Reflection;
+
 
 namespace GoodBearMongoLogger.Logging.Impl
 {
-    internal class LogEntryBase
+    internal abstract class AbstractLogEntryBase : ILogEntryBase
     {
         public DateTime TimeStamp { get; set; }
 

@@ -49,9 +49,8 @@ namespace GoodBearMongoLogger.Logging.Impl
         {
             try
             {
-                //TODO: Make this action into a private method and get thread, calling method etc.
                 LogEntry entry = new LogEntry { Level = level, Message = message, Exception = exception};
-
+                SetLogEntryCommonProperties(entry);
                 var document = _bsonDocumentBuilderService.BuildLogEntry(entry);
                 _dataAccessService.Save(document, _databaseName, _loggerName);
             }
@@ -65,9 +64,8 @@ namespace GoodBearMongoLogger.Logging.Impl
         {
             try
             {
-                //TODO: Make this action into a private method and get thread, calling method etc.
                 EventLogEntry entry = new EventLogEntry { Message = message, EventEntry = eventEntry };
-
+                SetLogEntryCommonProperties(entry);
                 var document = _bsonDocumentBuilderService.BuildEventLogEntry(entry);
                 _dataAccessService.Save(document, _databaseName, _loggerName);
             }
@@ -81,9 +79,8 @@ namespace GoodBearMongoLogger.Logging.Impl
         {
             try
             {
-                //TODO: Make this action into a private method and get thread, calling method etc.
                 AuditLogEntry entry = new AuditLogEntry { Message = message, AuditEntry = auditEntry };
-
+                SetLogEntryCommonProperties(entry);
                 var document = _bsonDocumentBuilderService.BuildAuditLogEntry(entry);
                 _dataAccessService.Save(document, _databaseName, _loggerName);
             }
@@ -91,6 +88,11 @@ namespace GoodBearMongoLogger.Logging.Impl
             {
                 throw new FailedToLogException("Failed to log : "+e.Message,e);
             }
+        }
+
+        private void SetLogEntryCommonProperties(ILogEntryBase logEntryBase)
+        {
+            //TODO: Implement this thread, timestamp etc.
         }
     }
 }
