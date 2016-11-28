@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacModule.cs" />
+    <Compile Include="Exceptions\FailedToBuildLoggerAutofacModuleException.cs" />
+    <Compile Include="Exceptions\FailedToCreateLoggerAutofacModuleException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
