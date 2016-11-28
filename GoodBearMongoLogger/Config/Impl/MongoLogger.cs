@@ -4,7 +4,7 @@ namespace GoodBearMongoLogger.Config.Impl
 {
     public class MongoLogger : ConfigurationSection
     {
-        [ConfigurationProperty("mongoConnection")]
+        [ConfigurationProperty("mongoConnection", IsRequired = false)]
         public MongoConnection MongoConnection
         {
             get
@@ -13,7 +13,7 @@ namespace GoodBearMongoLogger.Config.Impl
             }
         }
 
-        [ConfigurationProperty("loggers", IsDefaultCollection = false)]
+        [ConfigurationProperty("loggers", IsDefaultCollection = false, IsRequired = true)]
         public Loggers Loggers
         {
             get

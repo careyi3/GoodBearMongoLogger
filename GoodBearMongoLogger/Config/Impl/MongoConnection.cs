@@ -6,6 +6,7 @@ namespace GoodBearMongoLogger.Config.Impl
     public class MongoConnection : ConfigurationElement,IMongoConnection
     {
         [ConfigurationProperty("username", DefaultValue = "mongoadmin", IsRequired = true)]
+        [StringValidator(MinLength = 1)]
         public string Username
         {
             get
@@ -19,6 +20,7 @@ namespace GoodBearMongoLogger.Config.Impl
         }
 
         [ConfigurationProperty("password", DefaultValue = "mongoadmin", IsRequired = true)]
+        [StringValidator(MinLength = 1)]
         public string Password
         {
             get
@@ -32,6 +34,7 @@ namespace GoodBearMongoLogger.Config.Impl
         }
 
         [ConfigurationProperty("authDatabase", DefaultValue = "admin", IsRequired = true)]
+        [StringValidator(MinLength = 1)]
         public string AuthDatabase
         {
             get
@@ -45,6 +48,7 @@ namespace GoodBearMongoLogger.Config.Impl
         }
 
         [ConfigurationProperty("host", DefaultValue = "localhost", IsRequired = true)]
+        [StringValidator(MinLength = 1)]
         public string Host
         {
             get
@@ -57,12 +61,13 @@ namespace GoodBearMongoLogger.Config.Impl
             }
         }
 
-        [ConfigurationProperty("port", DefaultValue = "27017", IsRequired = true)]
-        public string Port
+        [ConfigurationProperty("port", DefaultValue = (int)27017, IsRequired = true)]
+        [IntegerValidator(MinValue = 0, MaxValue = 65535, ExcludeRange = false)]
+        public int Port
         {
             get
             {
-                return (string)this["port"];
+                return (int)this["port"];
             }
             set
             {

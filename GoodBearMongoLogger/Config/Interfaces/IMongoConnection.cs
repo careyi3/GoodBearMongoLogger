@@ -12,6 +12,6 @@ namespace GoodBearMongoLogger.Config.Interfaces
         string Password { get; set; }
         string AuthDatabase { get; set; }
         string Host { get; set; }
-        string Port { get; set; }
+        int Port { get; set; }
     }
 }

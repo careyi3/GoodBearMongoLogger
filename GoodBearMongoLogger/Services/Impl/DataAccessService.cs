@@ -1,6 +1,8 @@
 ﻿using GoodBearMongoLogger.DataAccess.Interfaces;
+using GoodBearMongoLogger.Exceptions;
 using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Bson;
+using System;
 using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Services.Impl
@@ -13,13 +15,20 @@ namespace GoodBearMongoLogger.Services.Impl
             _connectionManager = connectionManager;
         }
 
-        public void Save(BsonDocument data,string targetDatabase,string targetCollection)
+        public void Save(BsonDocument data, string targetDatabase, string targetCollection)
         {
-            var db = _connectionManager.MongoClient.GetDatabase(targetDatabase);
+            try
+            {
+                var db = _connectionManager.MongoClient.GetDatabase(targetDatabase);
 
-            var collection = db.GetCollection<BsonDocument>(targetCollection);
+                var collection = db.GetCollection<BsonDocument>(targetCollection);
 
-            collection.InsertOne(data);
+                collection.InsertOne(data);
+            }
+            catch(Exception e)
+            {
+                throw new MongoPersistanceException("Failed to persist log to MongoDb instance : "+e.Message,e);
+            }
         }
 
     }

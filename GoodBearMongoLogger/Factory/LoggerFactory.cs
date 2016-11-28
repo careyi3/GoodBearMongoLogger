@@ -2,6 +2,7 @@
 using GoodBearMongoLogger.DataAccess;
 using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
+using GoodBearMongoLogger.Exceptions;
 using GoodBearMongoLogger.Logging.Interfaces;
 using GoodBearMongoLogger.Services.Impl;
 using GoodBearMongoLogger.Services.Interfaces;
@@ -17,18 +18,41 @@ namespace GoodBearMongoLogger.Factory
         private static IMongoClient _mongoClient;
         private static Dictionary<string,Tuple<string,string>> _loggerConfigs;
         private static ConnectionManager _connectionManager;
+        private static bool _isInited;
 
         public static void Init()
         {
-            _configService = new ConfigService();
-            Config();
+            if (!_isInited)
+            {
+                try
+                {
+                    _configService = new ConfigService();
+                    Config();
+                    _isInited = true;
+                }
+                catch (Exception e)
+                {
+                    throw new FailedToInitaliseLoggerFactoryException("Failed to initalise LoggerFactory : " + e.Message, e);
+                }
+            }
         }
 
         public static void Init(IMongoClient mongoClient)
         {
-            _configService = new ConfigService();
-            _mongoClient = mongoClient;
-            Config();
+            if (!_isInited)
+            {
+                try
+                {
+                    _configService = new ConfigService();
+                    _mongoClient = mongoClient;
+                    Config();
+                    _isInited = true;
+                }
+                catch(Exception e)
+                {
+                    throw new FailedToInitaliseLoggerFactoryException("Failed to initalise LoggerFactory : "+e.Message,e);
+                }
+            }
         }
 
         private static void Config()
@@ -52,9 +76,13 @@ namespace GoodBearMongoLogger.Factory
 
         public static ILogger GetLogger(string loggerName)
         {
-            IDataAccessService dataAccessService = new DataAccessService(_connectionManager);
-            IBsonDocumentBuilderService bsonDocumentBuilderService = new BsonDocumentBuilderService();
-            return new Logging.Impl.Logger(dataAccessService,bsonDocumentBuilderService,_loggerConfigs[loggerName].Item2, _loggerConfigs[loggerName].Item1);
+            if (_isInited)
+            {
+                IDataAccessService dataAccessService = new DataAccessService(_connectionManager);
+                IBsonDocumentBuilderService bsonDocumentBuilderService = new BsonDocumentBuilderService();
+                return new Logging.Impl.Logger(dataAccessService, bsonDocumentBuilderService, _loggerConfigs[loggerName].Item2, _loggerConfigs[loggerName].Item1);
+            }
+            throw new LoggerFactoryNotInitalisedException("LoggerFactory is not initalised. Please call LoggerFactory.Init() before GetLogger().");
         }
     }
 }

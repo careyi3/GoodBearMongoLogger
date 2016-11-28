@@ -22,7 +22,7 @@ namespace GoodBearMongoLogger.DataAccess.Impl
             Password = mongoConfig.Password;
             AuthDatabase = mongoConfig.AuthDatabase;
             Host = mongoConfig.Host;
-            Port = Convert.ToInt32(mongoConfig.Port);
+            Port = mongoConfig.Port;
         }
     }
 }
