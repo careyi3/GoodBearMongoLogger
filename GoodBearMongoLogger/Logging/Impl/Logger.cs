@@ -3,6 +3,8 @@ using GoodBearMongoLogger.Logging.Interfaces;
 using GoodBearMongoLogger.Logging.Enum;
 using GoodBearMongoLogger.Services.Interfaces;
 using GoodBearMongoLogger.Exceptions;
+using System.Threading;
+using System.Diagnostics;
 
 namespace GoodBearMongoLogger.Logging.Impl
 {
@@ -33,9 +35,8 @@ namespace GoodBearMongoLogger.Logging.Impl
         {
             try
             {
-                //TODO: Make this action into a private method and get thread, calling method etc.
                 LogEntry entry = new LogEntry { Level = level, Message = message };
-
+                SetLogEntryCommonProperties(entry);
                 var document = _bsonDocumentBuilderService.BuildLogEntry(entry);
                 _dataAccessService.Save(document, _databaseName, _loggerName);
             }
@@ -92,7 +93,10 @@ namespace GoodBearMongoLogger.Logging.Impl
 
         private void SetLogEntryCommonProperties(ILogEntryBase logEntryBase)
         {
-            //TODO: Implement this thread, timestamp etc.
+            logEntryBase.ThreadId = Thread.CurrentThread.ManagedThreadId;
+            logEntryBase.TimeStamp = DateTime.Now;
+            logEntryBase.SourceMethod = new StackTrace().GetFrame(2).GetMethod();
+            logEntryBase.SourceClass = logEntryBase.SourceMethod.ReflectedType;
         }
     }
 }

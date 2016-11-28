@@ -8,6 +8,6 @@ namespace GoodBearMongoLogger.Logging.Interfaces
         DateTime TimeStamp { get; set; }
         int ThreadId { get; set; }
         Type SourceClass { get; set; }
-        MethodInfo SourceMethod { get; set; }
+        MethodBase SourceMethod { get; set; }
     }
 }

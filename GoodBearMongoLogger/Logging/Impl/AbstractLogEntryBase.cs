@@ -13,7 +13,7 @@ namespace GoodBearMongoLogger.Logging.Impl
 
         public Type SourceClass { get; set; }
 
-        public MethodInfo SourceMethod { get; set; }
+        public MethodBase SourceMethod { get; set; }
 
     }
 }
