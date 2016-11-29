@@ -32,6 +32,7 @@
     <Folder Include="Deploy\" />
     <Folder Include="en-GB\" />
     <Folder Include="Package\" />
+    <Folder Include="Package\Packages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Build\Build.ps1" />
