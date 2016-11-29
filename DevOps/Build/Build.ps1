@@ -8,4 +8,4 @@ $NuGet = $ConfigData.NuGet
 
 & $NuGet restore $ConfigData.Solution
 
-& $MSBuild $ConfigData.Solution /target:Clean /target:Build
+& $MSBuild $ConfigData.Solution /target:Clean /target:Build /P:Configuration=Release
