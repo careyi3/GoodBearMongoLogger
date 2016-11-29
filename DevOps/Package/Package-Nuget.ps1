@@ -7,4 +7,4 @@ $NuGet = $ConfigData.NuGet
 
 & $NuGet pack .\GoodBearMongoLogger\GoodBearMongoLogger.nuspec  -properties Configuration=Release
 
-& $NuGet pack .\GoodBearMongoLogger.Autofac\GoodBearMongoLogger.Autofac.nuspec  -properties Configuration=Release
+& $NuGet pack .\GoodBearMongoLogger.Autofac\GoodBearMongoLogger.Autofac.nuspec  -properties Configuration=Release 
