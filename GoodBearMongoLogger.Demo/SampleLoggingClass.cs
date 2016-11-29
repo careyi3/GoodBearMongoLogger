@@ -1,6 +1,6 @@
 ﻿using GoodBearMongoLogger.Logging.Interfaces;
-using Autofac.Extras.Attributed;
 using GoodBearMongoLogger.Logging.Enum;
+using GoodBearMongoLogger.Autofac;
 
 namespace GoodBearMongoLogger.Demo
 {
@@ -8,9 +8,9 @@ namespace GoodBearMongoLogger.Demo
     {
         private ILogger _logger;
 
-        public SampleLoggingClass([WithKey("Test")]ILogger logger)
+        public SampleLoggingClass(ILoggerWrapper loggerWrapper)
         {
-            _logger = logger;
+            _logger = loggerWrapper.GetLogger("Test");
         }
 
         public void DoStuff()

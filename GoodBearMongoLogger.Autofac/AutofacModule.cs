@@ -10,7 +10,6 @@ using GoodBearMongoLogger.Services.Impl;
 using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Driver;
 using System.Collections.Generic;
-using Autofac.Extras.Attributed;
 using System;
 using GoodBearMongoLogger.Autofac.Exceptions;
 
@@ -45,7 +44,7 @@ namespace GoodBearMongoLogger.Autofac
             {
                 throw new FailedToCreateLoggerAutofacModuleException("Failed to create instance of logger Autofac Module : " + e.Message, e);
             }
-}
+        }
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -71,8 +70,9 @@ namespace GoodBearMongoLogger.Autofac
                     new NamedParameter("databaseName",logger.DatabaseName),
                     new NamedParameter("loggerName",logger.LoggerName),
                 };
-                    builder.RegisterType<Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters).WithAttributeFilter();
+                    builder.RegisterType<Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters);
                 }
+                builder.RegisterType<LoggerWrapper>().As<ILoggerWrapper>();
             }
             catch(Exception e)
             {
