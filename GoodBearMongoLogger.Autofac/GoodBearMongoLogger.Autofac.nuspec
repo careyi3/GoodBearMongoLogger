@@ -14,10 +14,9 @@
     <copyright>Copyright 2016</copyright>
     <tags>Autofac GoodBearMongoLogger.Autofac GoodBearMongoLogger GoodBear Mongo Logger</tags>
     <dependencies>
-      <dependency id="Autofac" version="4.2.0"/>
-      <dependency id="MongoDB.Bson" version="2.3.0"/>
-      <dependency id="MongoDB.Driver" version="2.3.0"/>
-      <dependency id="MongoDB.Driver.Core" version="2.3.0"/>
+      <dependency id="Autofac" version="3.0.0"/>
+      <dependency id="MongoDB.Bson" version="2.2.0"/>
+      <dependency id="MongoDB.Driver.Core" version="2.2.0"/>
       <dependency id="GoodBearMongoLogger" version="1.0.0"/>
     </dependencies>
   </metadata>

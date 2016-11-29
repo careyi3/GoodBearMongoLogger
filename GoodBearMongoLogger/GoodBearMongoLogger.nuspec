@@ -14,10 +14,10 @@
     <copyright>Copyright 2016</copyright>
     <tags>GoodBearMongoLogger GoodBear Mongo Logger</tags>
 	<dependencies>
-		  <dependency id="MongoDB.Bson" version="2.3.0"/>
-      <dependency id="MongoDB.Driver" version="2.3.0"/>
-      <dependency id="MongoDB.Driver.Core" version="2.3.0"/>
-      <dependency id="Newtonsoft.Json" version="9.0.1"/>
+		  <dependency id="MongoDB.Bson" version="2.2.0"/>
+      <dependency id="MongoDB.Driver" version="2.2.0"/>
+      <dependency id="MongoDB.Driver.Core" version="2.2.0"/>
+      <dependency id="Newtonsoft.Json" version="3.5.8"/>
 	</dependencies>
   </metadata>
   <files>
