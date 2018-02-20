@@ -27,14 +27,11 @@
 *.sql
 *.sqlite
 
-.vs/
+.vscode/
 packages/
 GoodBearMongoLogger/bin/
 GoodBearMongoLogger/obj/
-GoodBearMongoLogger.Demo/bin/
-GoodBearMongoLogger.Demo/obj/
-GoodBearMongoLogger.Tests/bin/
-GoodBearMongoLogger.Tests/obj/
+GoodBearMongoLogger.Demo/
 GoodBearMongoLogger.Autofac/bin/
 GoodBearMongoLogger.Autofac/obj/
 

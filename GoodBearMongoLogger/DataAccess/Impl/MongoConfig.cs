@@ -4,7 +4,7 @@ using System;
 
 namespace GoodBearMongoLogger.DataAccess.Impl
 {
-    internal class MongoConfig : IMongoConfig
+    public class MongoConfig : IMongoConfig
     {
         public string Username { get; set; }
 

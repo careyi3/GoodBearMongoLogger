@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.Services.Interfaces
 {
-    internal interface IConfigService
+    public interface IConfigService
     {
         MongoLogger MongoLoggerConfig { get; }
     }

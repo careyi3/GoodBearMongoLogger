@@ -2,7 +2,7 @@
 
 namespace GoodBearMongoLogger.DataAccess.Interfaces
 {
-    internal interface IConnectionManager
+    public interface IConnectionManager
     {
         IMongoClient MongoClient { get; }
     }

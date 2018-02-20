@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Services.Impl
 {
-    internal class DataAccessService : IDataAccessService
+    public class DataAccessService : IDataAccessService
     {
         private IConnectionManager _connectionManager;
         public DataAccessService(IConnectionManager connectionManager)
@@ -15,7 +15,7 @@ namespace GoodBearMongoLogger.Services.Impl
             _connectionManager = connectionManager;
         }
 
-        public void Save(BsonDocument data, string targetDatabase, string targetCollection)
+        public async Task SaveAsync(BsonDocument data, string targetDatabase, string targetCollection)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace GoodBearMongoLogger.Services.Impl
 
                 var collection = db.GetCollection<BsonDocument>(targetCollection);
 
-                collection.InsertOne(data);
+                await collection.InsertOneAsync(data);
             }
             catch(Exception e)
             {
