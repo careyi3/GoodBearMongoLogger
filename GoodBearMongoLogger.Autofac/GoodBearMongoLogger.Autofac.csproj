@@ -7,10 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="GoodBearMongoLogger" Version="2.0.0" />
     <PackageReference Include="MongoDB.Bson" Version="2.5.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.5.0" />
-    <ProjectReference Include="GoodBearMongoLogger" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
