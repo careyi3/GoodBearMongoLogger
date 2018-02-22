@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo 'Packaging GoodBearMongoLogger...'
+dotnet clean
+dotnet build -c Release
+dotnet pack GoodBearMongoLogger.csproj -c Release
+echo 'Packaging done!'

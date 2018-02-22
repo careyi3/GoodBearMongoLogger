@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <NuspecFile>GoodBearMongoLogger.Autofac.nuspec</NuspecFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +10,7 @@
     <PackageReference Include="MongoDB.Bson" Version="2.5.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.5.0" />
-    <ProjectReference Include="..\GoodBearMongoLogger\GoodBearMongoLogger.csproj" />
+    <ProjectReference Include="GoodBearMongoLogger" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

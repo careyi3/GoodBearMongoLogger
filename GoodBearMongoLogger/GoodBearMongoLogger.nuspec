@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>GoodBearMongoLogger</id>
+    <version>2.0.0</version>
+    <title>GoodBearMongoLogger</title>
+    <authors>Ian Carey</authors>
+    <owners>Ian Carey</owners>
+    <licenseUrl>https://github.com/careyi3/GoodBearMongoLogger/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/careyi3/GoodBearMongoLogger/blob/master/README.md</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .NET logger implementation for logging to MongoDB</description>
+    <releaseNotes>This is the inital release of GoodBearMongoLogger.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>GoodBearMongoLogger GoodBear Mongo Logger</tags>
+	<dependencies>
+      <group targetFramework=".NETStandard2.0">
+	    <dependency id="MongoDB.Bson" version="2.5.0"/>
+        <dependency id="MongoDB.Driver" version="2.5.0"/>
+        <dependency id="MongoDB.Driver.Core" version="2.5.0"/>
+        <dependency id="Newtonsoft.Json" version="11.0.1"/>
+      </group>
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="./bin/Release/netstandard2.0/GoodBearMongoLogger.dll" target="lib/netstandard2.0/GoodBearMongoLogger.dll" />
+  </files>
+</package>
