@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace GoodBearMongoLogger.Services.Interfaces
 {
-    internal interface IBsonDocumentBuilderService
+    public interface IBsonDocumentBuilderService
     {
         BsonDocument BuildLogEntry(LogEntry logEntry);
         BsonDocument BuildAuditLogEntry(AuditLogEntry logEntry);

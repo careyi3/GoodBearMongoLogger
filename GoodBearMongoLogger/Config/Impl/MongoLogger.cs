@@ -1,27 +1,19 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
 
 namespace GoodBearMongoLogger.Config.Impl
 {
-    internal class MongoLogger : ConfigurationSection
+    public class MongoLogger
     {
-        [ConfigurationProperty("mongoConnection", IsRequired = false)]
-        public MongoConnection MongoConnection
+
+        public MongoLogger(MongoConnection mongoConnection, ICollection<Logger> loggers)
         {
-            get
-            {
-                return (MongoConnection)base["mongoConnection"];
-            }
+            MongoConnection = mongoConnection;
+            Loggers = loggers;
         }
 
-        [ConfigurationProperty("loggers", IsDefaultCollection = false, IsRequired = true)]
-        public Loggers Loggers
-        {
-            get
-            {
-                return (Loggers)base["loggers"];
-            }
-    
-        }
-        
+        public MongoConnection MongoConnection { get; set; }
+
+        public ICollection<Logger> Loggers  { get; set; }
+
     }
 }

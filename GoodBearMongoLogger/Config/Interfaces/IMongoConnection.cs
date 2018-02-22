@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Config.Interfaces
 {
-    internal interface IMongoConnection
+    public interface IMongoConnection
     {
         string Username { get; set; }
         string Password { get; set; }

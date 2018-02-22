@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Services.Interfaces
 {
-    internal interface IDataAccessService
+    public interface IDataAccessService
     {
-        void Save(BsonDocument data, string targetDatabase, string targetCollection);
+        Task SaveAsync(BsonDocument data, string targetDatabase, string targetCollection);
     }
 }

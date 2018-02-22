@@ -6,11 +6,10 @@ using GoodBearMongoLogger.Exceptions;
 
 namespace GoodBearMongoLogger.DataAccess
 {
-    internal class ConnectionManager : IConnectionManager
+    public class ConnectionManager : IConnectionManager
     {
         
         private MongoCredential _mongoCredential;
-        private ICollection<MongoCredential> _mongoCredentials;
         private MongoClientSettings _mongoClientSettings;
         private IMongoClient _mongoClient;
         private MongoServerAddress _mongoServerAddress;
@@ -28,12 +27,11 @@ namespace GoodBearMongoLogger.DataAccess
             try
             { 
                 _mongoCredential = MongoCredential.CreateCredential(mongoConfig.AuthDatabase, mongoConfig.Username, mongoConfig.Password);
-                _mongoCredentials = new List<MongoCredential>();
-                _mongoCredentials.Add(_mongoCredential);
                 _mongoClientSettings = new MongoClientSettings();
-                _mongoClientSettings.Credentials = _mongoCredentials;
+                _mongoClientSettings.Credential = _mongoCredential;
                 _mongoServerAddress = new MongoServerAddress(mongoConfig.Host, mongoConfig.Port);
                 _mongoClientSettings.Server = _mongoServerAddress;
+                _mongoClientSettings.UseSsl = true; 
                 _mongoClient = new MongoClient(_mongoClientSettings);
             }
             catch (Exception e)

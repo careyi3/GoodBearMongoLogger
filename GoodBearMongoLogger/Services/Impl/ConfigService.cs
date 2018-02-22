@@ -1,42 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
 using GoodBearMongoLogger.Exceptions;
 using GoodBearMongoLogger.Services.Interfaces;
 using GoodBearMongoLogger.Config.Impl;
 
 namespace GoodBearMongoLogger.Services.Impl
 {
-    internal class ConfigService : IConfigService
+    public class ConfigService : IConfigService
     {
         private MongoLogger _mongoLogger;
+        private MongoConnection _mongoConnection;
+        private ICollection<Logger> _loggers;
         
+        public ConfigService(MongoConnection mongoCollection, ICollection<Logger> loggers)
+        {
+            _mongoConnection = mongoCollection;
+            _loggers = loggers;
+        }
+
         public MongoLogger MongoLoggerConfig
         {
             get
             {
+                if(_mongoLogger == null)
+                {
+                    _mongoLogger = new MongoLogger(_mongoConnection, _loggers);
+                }
                 return _mongoLogger;
             }
         }
-
-        public ConfigService()
-        {
-            var sectionName = "mongoLogger";
-            _mongoLogger = GetConfig(sectionName);
-        }
-
-        public ConfigService(string sectionName)
-        {
-            _mongoLogger = GetConfig(sectionName);
-        }
         
-        private MongoLogger GetConfig(string sectionName)
+        private MongoLogger GetConfig(string loggerName)
         {
             try
             {
-                return (MongoLogger)System.Configuration.ConfigurationManager.GetSection(sectionName);
+                return new MongoLogger(_mongoConnection, _loggers);
             }
             catch (Exception e)
             {
-                throw new InvalidMongoLoggerConfigurationException("Invalid logger configuration for '"+ sectionName + "': " + e.Message, e);
+                throw new InvalidMongoLoggerConfigurationException("No logger configured for '"+ loggerName + "': " + e.Message, e);
             }
         }
 

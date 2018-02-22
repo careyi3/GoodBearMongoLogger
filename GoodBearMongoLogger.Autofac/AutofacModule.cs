@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Core;
 using GoodBearMongoLogger.Config.Interfaces;
+using GoodBearMongoLogger.Config.Impl;
 using GoodBearMongoLogger.DataAccess;
 using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
@@ -21,11 +22,11 @@ namespace GoodBearMongoLogger.Autofac
         private IConfigService _configService;
         private IMongoClient _mongoClient;
 
-        public AutofacModule()
+        public AutofacModule(MongoConnection mongoCollection, ICollection<Config.Impl.Logger> loggers)
         {
             try
             {
-                _configService = new ConfigService();
+                _configService = new ConfigService(mongoCollection, loggers);
             }
             catch(Exception e)
             {
@@ -33,11 +34,11 @@ namespace GoodBearMongoLogger.Autofac
             }
         }
 
-        public AutofacModule(IMongoClient mongoClient)
+        public AutofacModule(IMongoClient mongoClient, MongoConnection mongoCollection, ICollection<Config.Impl.Logger> loggers)
         {
             try
             {
-                _configService = new ConfigService();
+                _configService = new ConfigService(mongoCollection, loggers);
                 _mongoClient = mongoClient;
             }
             catch(Exception e)
@@ -63,14 +64,14 @@ namespace GoodBearMongoLogger.Autofac
                 builder.RegisterType<BsonDocumentBuilderService>().As<IBsonDocumentBuilderService>();
                 builder.RegisterType<DataAccessService>().As<IDataAccessService>();
 
-                foreach (var logger in _configService.MongoLoggerConfig.Loggers.GetLoggers())
+                foreach (var logger in _configService.MongoLoggerConfig.Loggers)
                 {
                     IList<Parameter> parameters = new List<Parameter>
-                {
-                    new NamedParameter("databaseName",logger.DatabaseName),
-                    new NamedParameter("loggerName",logger.LoggerName),
-                };
-                    builder.RegisterType<Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters);
+                    {
+                        new NamedParameter("databaseName",logger.DatabaseName),
+                        new NamedParameter("loggerName",logger.LoggerName),
+                    };
+                    builder.RegisterType<Logging.Impl.Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters);
                 }
                 builder.RegisterType<LoggerWrapper>().As<ILoggerWrapper>();
             }

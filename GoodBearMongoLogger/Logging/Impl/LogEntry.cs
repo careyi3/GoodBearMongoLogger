@@ -4,10 +4,10 @@ using System;
 
 namespace GoodBearMongoLogger.Logging.Impl
 {
-    internal class LogEntry : AbstractLogEntryBase
+    public class LogEntry : AbstractLogEntryBase
     {
-        public LogLevel Level {get; set;}
-        public Exception Exception { get; set; }
+        public string Level {get; set;}
+        public string Exception { get; set; }
         public string Message { get; set; }
     }
 }

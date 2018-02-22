@@ -9,6 +9,7 @@ using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using GoodBearMongoLogger.Config.Impl;
 
 namespace GoodBearMongoLogger.Factory
 {
@@ -20,13 +21,13 @@ namespace GoodBearMongoLogger.Factory
         private static ConnectionManager _connectionManager;
         private static bool _isInited;
 
-        public static void Init()
+        public static void Init(MongoConnection mongoCollection, ICollection<Logger> loggers)
         {
             if (!_isInited)
             {
                 try
                 {
-                    _configService = new ConfigService();
+                    _configService = new ConfigService(mongoCollection, loggers);
                     Config();
                     _isInited = true;
                 }
@@ -37,13 +38,13 @@ namespace GoodBearMongoLogger.Factory
             }
         }
 
-        public static void Init(IMongoClient mongoClient)
+        public static void Init(IMongoClient mongoClient, MongoConnection mongoCollection, ICollection<Logger> loggers)
         {
             if (!_isInited)
             {
                 try
                 {
-                    _configService = new ConfigService();
+                    _configService = new ConfigService(mongoCollection, loggers);
                     _mongoClient = mongoClient;
                     Config();
                     _isInited = true;
@@ -68,7 +69,7 @@ namespace GoodBearMongoLogger.Factory
                 _connectionManager = new ConnectionManager(mongoConfig);
             }
             _loggerConfigs = new Dictionary<string, Tuple<string, string>>();
-            foreach (var logger in _configService.MongoLoggerConfig.Loggers.GetLoggers())
+            foreach (var logger in _configService.MongoLoggerConfig.Loggers)
             {
                 _loggerConfigs.Add(logger.LoggerName, new Tuple<string, string>(logger.LoggerName, logger.DatabaseName));
             }

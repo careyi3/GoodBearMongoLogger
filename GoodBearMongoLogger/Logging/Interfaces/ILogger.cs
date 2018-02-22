@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GoodBearMongoLogger.Logging.Enum;
 
 namespace GoodBearMongoLogger.Logging.Interfaces
 {
     public interface ILogger
     {
-        void Log(LogLevel level, string message, Exception exception);
-        void Log(LogLevel level, string message);
-        void LogEvent(string message, IEventEntry eventEntry);
-        void LogAudit(string message, IAuditEntry auditEntry);
+        Task LogAsync(LogLevel level, string message, Exception exception);
+        Task LogAsync(LogLevel level, string message);
+        Task LogEventAsync(string message, IEventEntry eventEntry);
+        Task LogAuditAsync(string message, IAuditEntry auditEntry);
 
         string LoggerName { get; }
 
