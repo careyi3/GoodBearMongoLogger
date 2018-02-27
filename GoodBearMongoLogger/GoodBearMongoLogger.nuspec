@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>GoodBearMongoLogger</id>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <title>GoodBearMongoLogger</title>
     <authors>Ian Carey</authors>
     <owners>Ian Carey</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/careyi3/GoodBearMongoLogger/blob/master/README.md</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .NET logger implementation for logging to MongoDB</description>
-    <releaseNotes>This is the inital release of GoodBearMongoLogger.</releaseNotes>
+    <releaseNotes>Removed support for XML config.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>GoodBearMongoLogger GoodBear Mongo Logger</tags>
 	<dependencies>
