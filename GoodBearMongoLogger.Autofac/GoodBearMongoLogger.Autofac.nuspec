@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>GoodBearMongoLogger.Autofac</id>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <title>GoodBearMongoLogger.Autofac</title>
     <authors>Ian Carey</authors>
     <owners>Ian Carey</owners>
@@ -10,12 +10,12 @@
     <projectUrl>https://github.com/careyi3/GoodBearMongoLogger/blob/master/README.md</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .NET logger implementation for logging to MongoDB</description>
-    <releaseNotes>This is the inital release of GoodBearMongoLogger.Autofac.</releaseNotes>
+    <releaseNotes>Removed support for XML config GoodBearMongoLogger.Autofac.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Autofac GoodBearMongoLogger.Autofac GoodBearMongoLogger GoodBear Mongo Logger</tags>
 	<dependencies>
     <group targetFramework=".NETStandard2.0">
-	    <dependency id="GoodBearMongoLogger" version="2.0.0" exclude="Build,Analyzers" />
+	    <dependency id="GoodBearMongoLogger" version="2.1.0" exclude="Build,Analyzers" />
       <dependency id="Autofac" version="4.6.2" exclude="Build,Analyzers" />
       <dependency id="MongoDB.Bson" version="2.5.0" exclude="Build,Analyzers" />
       <dependency id="MongoDB.Driver" version="2.5.0" exclude="Build,Analyzers" />

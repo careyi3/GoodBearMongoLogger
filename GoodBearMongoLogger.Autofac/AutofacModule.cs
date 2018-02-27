@@ -18,15 +18,16 @@ namespace GoodBearMongoLogger.Autofac
 {
     public class AutofacModule : Module
     {
-
-        private IConfigService _configService;
         private IMongoClient _mongoClient;
+        private ICollection<LoggerConfig> _loggerConfigs;
+        private IMongoConnection _mongoConnection;
 
-        public AutofacModule(MongoConnection mongoConnection, ICollection<Config.Impl.Logger> loggers)
+        public AutofacModule(IMongoConnection mongoConnection, ICollection<LoggerConfig> loggerConfigs)
         {
             try
             {
-                _configService = new ConfigService(mongoConnection, loggers);
+                _loggerConfigs = loggerConfigs;
+                _mongoConnection = mongoConnection;
             }
             catch(Exception e)
             {
@@ -34,11 +35,11 @@ namespace GoodBearMongoLogger.Autofac
             }
         }
 
-        public AutofacModule(IMongoClient mongoClient, MongoConnection mongoCollection, ICollection<Config.Impl.Logger> loggers)
+        public AutofacModule(IMongoClient mongoClient, ICollection<LoggerConfig> loggerConfigs)
         {
             try
             {
-                _configService = new ConfigService(mongoCollection, loggers);
+                _loggerConfigs = loggerConfigs;
                 _mongoClient = mongoClient;
             }
             catch(Exception e)
@@ -51,7 +52,7 @@ namespace GoodBearMongoLogger.Autofac
         {
             try
             {
-                builder.Register(x => _configService.MongoLoggerConfig.MongoConnection).As<IMongoConnection>();
+                builder.Register(x => _mongoConnection).As<IMongoConnection>();
                 builder.RegisterType<MongoConfig>().As<IMongoConfig>();
                 if (_mongoClient != null)
                 {
@@ -64,14 +65,14 @@ namespace GoodBearMongoLogger.Autofac
                 builder.RegisterType<BsonDocumentBuilderService>().As<IBsonDocumentBuilderService>();
                 builder.RegisterType<DataAccessService>().As<IDataAccessService>();
 
-                foreach (var logger in _configService.MongoLoggerConfig.Loggers)
+                foreach (var logger in _loggerConfigs)
                 {
                     IList<Parameter> parameters = new List<Parameter>
                     {
-                        new NamedParameter("databaseName",logger.DatabaseName),
-                        new NamedParameter("loggerName",logger.LoggerName),
+                        new NamedParameter("databaseName", logger.DatabaseName),
+                        new NamedParameter("loggerName", logger.LoggerName),
                     };
-                    builder.RegisterType<Logging.Impl.Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters);
+                    builder.RegisterType<Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters);
                 }
                 builder.RegisterType<LoggerWrapper>().As<ILoggerWrapper>();
             }
