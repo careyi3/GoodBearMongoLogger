@@ -22,11 +22,11 @@ namespace GoodBearMongoLogger.Autofac
         private IConfigService _configService;
         private IMongoClient _mongoClient;
 
-        public AutofacModule(MongoConnection mongoCollection, ICollection<Config.Impl.Logger> loggers)
+        public AutofacModule(MongoConnection mongoConnection, ICollection<Config.Impl.Logger> loggers)
         {
             try
             {
-                _configService = new ConfigService(mongoCollection, loggers);
+                _configService = new ConfigService(mongoConnection, loggers);
             }
             catch(Exception e)
             {

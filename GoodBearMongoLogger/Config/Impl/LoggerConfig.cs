@@ -1,6 +1,6 @@
 ﻿namespace GoodBearMongoLogger.Config.Impl
 {
-    public class Logger
+    public class LoggerConfig
     {
         public string DatabaseName { get; set; }
 
