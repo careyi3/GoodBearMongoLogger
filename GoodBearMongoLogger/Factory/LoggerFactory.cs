@@ -78,7 +78,7 @@ namespace GoodBearMongoLogger.Factory
 
         private static LoggerConfig GetLoggerConfig(string loggerName)
         {
-            var loggerConfig = _loggerConfigs.First(x => x.LoggerName == loggerName);
+            var loggerConfig = _loggerConfigs.FirstOrDefault(x => x.LoggerName == loggerName);
             if (loggerName == null)
             {
                 throw new InvalidMongoLoggerConfigurationException($"No logger found with name {loggerName}.");
@@ -88,7 +88,7 @@ namespace GoodBearMongoLogger.Factory
 
         private static Logger FindLoggerByName(string loggerName)
         {
-            return _loggers.First(x => x.LoggerName == loggerName);
+            return _loggers.FirstOrDefault(x => x.LoggerName == loggerName);
         }
 
         private static Logger BuildLogger(LoggerConfig loggerConfig)
