@@ -1,5 +1,5 @@
 ﻿using GoodBearMongoLogger.Config.Interfaces;
-using GoodBearMongoLogger.DataAccess;
+using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
 using GoodBearMongoLogger.Exceptions;
 using GoodBearMongoLogger.Logging.Interfaces;
