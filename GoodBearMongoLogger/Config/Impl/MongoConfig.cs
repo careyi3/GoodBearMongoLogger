@@ -1,7 +1,7 @@
 ﻿using GoodBearMongoLogger.Config.Interfaces;
 using System;
 
-namespace GoodBearMongoLogger.COnfig.Impl
+namespace GoodBearMongoLogger.Config.Impl
 {
     public class MongoConfig : IMongoConfig
     {

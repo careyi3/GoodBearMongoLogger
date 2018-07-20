@@ -5,7 +5,7 @@ using MongoDB.Driver;
 using System;
 using GoodBearMongoLogger.Exceptions;
 
-namespace GoodBearMongoLogger.DataAccess
+namespace GoodBearMongoLogger.DataAccess.Impl
 {
     public class ConnectionManager : IConnectionManager
     {

@@ -2,7 +2,7 @@
 using Autofac.Core;
 using GoodBearMongoLogger.Config.Interfaces;
 using GoodBearMongoLogger.Config.Impl;
-using GoodBearMongoLogger.DataAccess;
+using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
 using GoodBearMongoLogger.Logging.Impl;
 using GoodBearMongoLogger.Logging.Interfaces;
