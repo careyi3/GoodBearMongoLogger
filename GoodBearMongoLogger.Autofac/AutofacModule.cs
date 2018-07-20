@@ -3,7 +3,6 @@ using Autofac.Core;
 using GoodBearMongoLogger.Config.Interfaces;
 using GoodBearMongoLogger.Config.Impl;
 using GoodBearMongoLogger.DataAccess;
-using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
 using GoodBearMongoLogger.Logging.Impl;
 using GoodBearMongoLogger.Logging.Interfaces;
@@ -20,14 +19,14 @@ namespace GoodBearMongoLogger.Autofac
     {
         private IMongoClient _mongoClient;
         private ICollection<LoggerConfig> _loggerConfigs;
-        private IMongoConnection _mongoConnection;
+        private IMongoConfig _mongoConfig;
 
-        public AutofacModule(IMongoConnection mongoConnection, ICollection<LoggerConfig> loggerConfigs)
+        public AutofacModule(IMongoConfig mongoConfig, ICollection<LoggerConfig> loggerConfigs)
         {
             try
             {
                 _loggerConfigs = loggerConfigs;
-                _mongoConnection = mongoConnection;
+                _mongoConfig = mongoConfig;
             }
             catch(Exception e)
             {
@@ -52,8 +51,7 @@ namespace GoodBearMongoLogger.Autofac
         {
             try
             {
-                builder.Register(x => _mongoConnection).As<IMongoConnection>();
-                builder.RegisterType<MongoConfig>().As<IMongoConfig>();
+                builder.Register(x => _mongoConfig).As<IMongoConfig>();
                 if (_mongoClient != null)
                 {
                     builder.Register(x => new ConnectionManager(_mongoClient)).As<IConnectionManager>().SingleInstance();
@@ -62,8 +60,8 @@ namespace GoodBearMongoLogger.Autofac
                 {
                     builder.RegisterType<ConnectionManager>().As<IConnectionManager>().SingleInstance();
                 }
-                builder.RegisterType<BsonDocumentBuilderService>().As<IBsonDocumentBuilderService>();
-                builder.RegisterType<DataAccessService>().As<IDataAccessService>();
+                builder.RegisterType<BsonDocumentBuilderService>().As<IBsonDocumentBuilderService>().InstancePerLifetimeScope();
+                builder.RegisterType<DataAccessService>().As<IDataAccessService>().InstancePerLifetimeScope();
 
                 foreach (var logger in _loggerConfigs)
                 {
@@ -72,9 +70,9 @@ namespace GoodBearMongoLogger.Autofac
                         new NamedParameter("databaseName", logger.DatabaseName),
                         new NamedParameter("loggerName", logger.LoggerName),
                     };
-                    builder.RegisterType<Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters);
+                    builder.RegisterType<Logger>().As<ILogger>().Keyed<ILogger>(logger.LoggerName).WithParameters(parameters).InstancePerLifetimeScope();
                 }
-                builder.RegisterType<LoggerWrapper>().As<ILoggerWrapper>();
+                builder.RegisterType<LoggerWrapper>().As<ILoggerWrapper>().InstancePerLifetimeScope();
             }
             catch(Exception e)
             {
