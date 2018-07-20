@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GoodBearMongoLogger.DataAccess.Interfaces;
+using GoodBearMongoLogger.Config.Interfaces;
 using MongoDB.Driver;
 using System;
 using GoodBearMongoLogger.Exceptions;

@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace GoodBearMongoLogger.Config.Interfaces
 {
-    public interface IMongoConnection
+    public interface IMongoConfig
     {
         string Username { get; set; }
+
         string Password { get; set; }
+
         string AuthDatabase { get; set; }
+
         string Host { get; set; }
+
         int Port { get; set; }
     }
 }

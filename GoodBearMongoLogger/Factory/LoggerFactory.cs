@@ -1,6 +1,5 @@
 ﻿using GoodBearMongoLogger.Config.Interfaces;
 using GoodBearMongoLogger.DataAccess;
-using GoodBearMongoLogger.DataAccess.Impl;
 using GoodBearMongoLogger.DataAccess.Interfaces;
 using GoodBearMongoLogger.Exceptions;
 using GoodBearMongoLogger.Logging.Interfaces;
@@ -20,17 +19,16 @@ namespace GoodBearMongoLogger.Factory
         private static ICollection<LoggerConfig> _loggerConfigs;
         private static ConnectionManager _connectionManager;
         private static bool _isInited;
+        private static ICollection<Logger> _loggers;
 
-        public static void Init(MongoConnection mongoConnection, ICollection<LoggerConfig> loggerConfigs)
+        public static void Init(IMongoConfig mongoConfig, ICollection<LoggerConfig> loggerConfigs)
         {
             if (!_isInited)
             {
                 try
                 {
-                    _loggerConfigs = loggerConfigs;
-                    IMongoConfig mongoConfig = new MongoConfig(mongoConnection);
+                    InitCommon(loggerConfigs);
                     _connectionManager = new ConnectionManager(mongoConfig);
-                    _isInited = true;
                 }
                 catch (Exception e)
                 {
@@ -45,13 +43,12 @@ namespace GoodBearMongoLogger.Factory
             {
                 try
                 {
-                    _loggerConfigs = loggerConfigs;
+                    InitCommon(loggerConfigs);
                     _connectionManager = new ConnectionManager(mongoClient);
-                    _isInited = true;
                 }
                 catch(Exception e)
                 {
-                    throw new FailedToInitaliseLoggerFactoryException("Failed to initalise LoggerFactory : "+e.Message,e);
+                    throw new FailedToInitaliseLoggerFactoryException("Failed to initalise LoggerFactory : " + e.Message,e);
                 }
             }
         }
@@ -60,16 +57,45 @@ namespace GoodBearMongoLogger.Factory
         {
             if (_isInited)
             {
-                IDataAccessService dataAccessService = new DataAccessService(_connectionManager);
-                IBsonDocumentBuilderService bsonDocumentBuilderService = new BsonDocumentBuilderService();
-                var logger = _loggerConfigs.First(x => x.LoggerName == loggerName);
-                if (loggerName == null)
+                var logger = FindLoggerByName(loggerName);
+                if (logger == null)
                 {
-                    throw new InvalidMongoLoggerConfigurationException($"No logger found with name {loggerName}.");
+                    var loggerConfig = GetLoggerConfig(loggerName);
+                    _loggers.Add(BuildLogger(loggerConfig));
+                    return FindLoggerByName(loggerName);
                 }
-                return new Logger(dataAccessService, bsonDocumentBuilderService, logger.DatabaseName, logger.LoggerName);
+                return logger;
             }
             throw new LoggerFactoryNotInitalisedException("LoggerFactory is not initalised. Please call LoggerFactory.Init() before GetLogger().");
+        }
+
+        private static void InitCommon(ICollection<LoggerConfig> loggerConfigs)
+        {
+            _loggerConfigs = loggerConfigs;
+            _loggers = new List<Logger>();
+            _isInited = true;
+        }
+
+        private static LoggerConfig GetLoggerConfig(string loggerName)
+        {
+            var loggerConfig = _loggerConfigs.First(x => x.LoggerName == loggerName);
+            if (loggerName == null)
+            {
+                throw new InvalidMongoLoggerConfigurationException($"No logger found with name {loggerName}.");
+            }
+            return loggerConfig;
+        }
+
+        private static Logger FindLoggerByName(string loggerName)
+        {
+            return _loggers.First(x => x.LoggerName == loggerName);
+        }
+
+        private static Logger BuildLogger(LoggerConfig loggerConfig)
+        {
+            IDataAccessService dataAccessService = new DataAccessService(_connectionManager);
+            IBsonDocumentBuilderService bsonDocumentBuilderService = new BsonDocumentBuilderService();
+            return new Logger(dataAccessService, bsonDocumentBuilderService, loggerConfig.DatabaseName, loggerConfig.LoggerName);
         }
     }
 }

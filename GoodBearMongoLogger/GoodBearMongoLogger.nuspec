@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>GoodBearMongoLogger</id>
-    <version>2.1.0</version>
+    <version>3.0.0</version>
     <title>GoodBearMongoLogger</title>
     <authors>Ian Carey</authors>
     <owners>Ian Carey</owners>
@@ -15,7 +15,7 @@
     <tags>GoodBearMongoLogger GoodBear Mongo Logger</tags>
 	<dependencies>
       <group targetFramework=".NETStandard2.0">
-	    <dependency id="MongoDB.Bson" version="2.5.0"/>
+	      <dependency id="MongoDB.Bson" version="2.5.0"/>
         <dependency id="MongoDB.Driver" version="2.5.0"/>
         <dependency id="MongoDB.Driver.Core" version="2.5.0"/>
         <dependency id="Newtonsoft.Json" version="11.0.1"/>

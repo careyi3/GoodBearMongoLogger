@@ -1,8 +1,9 @@
 ﻿using GoodBearMongoLogger.Config.Interfaces;
+using System;
 
-namespace GoodBearMongoLogger.Config.Impl
+namespace GoodBearMongoLogger.COnfig.Impl
 {
-    public class MongoConnection : IMongoConnection
+    public class MongoConfig : IMongoConfig
     {
         public string Username { get; set; }
 
