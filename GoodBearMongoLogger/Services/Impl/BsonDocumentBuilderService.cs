@@ -1,4 +1,5 @@
 ﻿using GoodBearMongoLogger.Logging.Impl;
+using GoodBearMongoLogger.Logging.Interfaces;
 using GoodBearMongoLogger.Services.Interfaces;
 using MongoDB.Bson;
 using Newtonsoft.Json;
@@ -14,7 +15,8 @@ namespace GoodBearMongoLogger.Services.Impl
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
-            return BsonDocument.Parse(json);
+            var bson = BsonDocument.Parse(json);
+            return OverrideDateTime(bson, logEntry);
         }
 
         public BsonDocument BuildEventLogEntry(EventLogEntry logEntry)
@@ -23,7 +25,8 @@ namespace GoodBearMongoLogger.Services.Impl
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
-            return BsonDocument.Parse(json);
+            var bson = BsonDocument.Parse(json);
+            return OverrideDateTime(bson, logEntry);
         }
 
         public BsonDocument BuildLogEntry(LogEntry logEntry)
@@ -32,7 +35,15 @@ namespace GoodBearMongoLogger.Services.Impl
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
-            return BsonDocument.Parse(json);
+            var bson = BsonDocument.Parse(json);
+            return OverrideDateTime(bson, logEntry);
         }
+
+        private BsonDocument OverrideDateTime(BsonDocument bson, ILogEntryBase logEntry)
+        {
+            bson["TimeStamp"] = logEntry.TimeStamp;
+            return bson;
+        }
+
     }
 }

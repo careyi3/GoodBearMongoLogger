@@ -9,11 +9,5 @@ namespace GoodBearMongoLogger.Logging.Impl
     {
         public DateTime TimeStamp { get; set; }
 
-        public int ThreadId { get; set; }
-
-        public string SourceClass { get; set; }
-
-        public string SourceMethod { get; set; }
-
     }
 }
